@@ -5,5 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejercicio 2</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Try-catch divide(a,b)</h1>
+    <script>
+      function divide(a, b) {
+        if (b == 0) {
+          throw new Error('No se puede dividir por 0');
+        }
+        return a / b;
+      }
+
+      try {
+        console.log(divide(10, 3));
+      } catch (e) {
+        alert(e.message);
+      }
+    </script>
+  </body>
 </html>
