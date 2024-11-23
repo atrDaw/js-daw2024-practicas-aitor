@@ -1,10 +1,15 @@
-const mailExp = /^[a-z]{4}@[a-z]{4}\.[a-z]{4}$/;
+const mailExp = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{3}$/;
 const passExp = /^[a-z]{8,10}$/;
+//valores de los inputs
+let mailValue=document.querySelector("#mail")
+let passValue=document.querySelector("#password")
 
 let inputs = document.querySelectorAll('input');
 inputs.forEach((input) => {
   input.addEventListener('blur', validar);
   input.addEventListener('focus', ocultarError);
+  input.addEventListener('input', actualizarBotonEnviar);
+  
 });
 
 function validar(e) {
@@ -39,8 +44,8 @@ function ocultarError(e) {
   }
 }
 
-function actualizarBotonEnviar() {
-  if (document.querySelector('#errorMail').hidden && document.querySelector('#errorPassword').hidden) {
+function actualizarBotonEnviar(e) {
+  if (mailExp.test(mailValue.value)&&passExp.test(passValue.value)) {
     document.querySelector('#boton').disabled = false;
   } else {
     document.querySelector('#boton').disabled = true;
