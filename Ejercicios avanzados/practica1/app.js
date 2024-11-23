@@ -1,3 +1,4 @@
+let span = document.querySelector('span');
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -5,26 +6,32 @@ function setCookie(cname, cvalue, exdays) {
   document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
 }
 function getCookie(cname) {
-    var name = cname + '=';
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+  var name = cname + '=';
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
     }
-    return '';
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
   }
-  function deleteCookie(cname) {
-    document.cookie =
-      cname + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
-  }
-
-if (getCookie("visitas")== '') {
-  setCookie('visitas', 1, 30);
-}else{
-    
+  return '';
 }
+function deleteCookie(cname) {
+  document.cookie = cname + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
+}
+
+if (getCookie('visitas') == ''||getCookie('visitas') == '0') {
+  setCookie('visitas', 1, 30);
+} else {
+  let visitas = parseInt(getCookie('visitas'));
+  visitas++;
+  setCookie('visitas', visitas, 30);
+}
+if (parseInt(getCookie('visitas')) > 10) {
+  deleteCookie('visitas');
+  setCookie('visitas', 0, 30);
+}
+span.textContent = getCookie('visitas');
