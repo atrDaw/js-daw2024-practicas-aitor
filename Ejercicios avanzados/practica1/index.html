@@ -11,15 +11,25 @@
       crossorigin="anonymous"
     />
     <style>
-        body{
-            background: rgb(235, 181, 19);
-            color: white;
-        }
+      body {
+        background: rgb(48, 47, 47);
+      }
+      div {
+        background: rgb(235, 181, 19);
+        color: white;
+        border-radius: 10px;
+      }
     </style>
   </head>
-  <body>
-    <h1 class="border-bottom text-center">Contador de visitas</h1>
-    <p class="text-center">Has visitado esta pagina <span></span> veces</p>
-    <script src="app.js" ></script>
+  <body class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container w-50 border p-5">
+      <h1 class="border-bottom text-center">Contador de visitas</h1>
+      <p class="text-center">
+        Has visitado esta pagina
+        <span></span>
+        veces
+      </p>
+    </div>
+    <script src="app.js"></script>
   </body>
 </html>
