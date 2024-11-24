@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica 3</title>
+  </head>
+  <body>
+    <h1>Cuenta atrás</h1>
+    <p id="parrafo1">cuenta atras cada 1s ...0</p>
+    <p id="parrafo2">cuenta atras cada 0.1s ...FIN</p>
+    <script type="module">
+      import * as tempo from '../modulos/temporizador.js';
+
+      let p1 = document.querySelector('#parrafo1');
+      let p2 = document.querySelector('#parrafo2');
+    
+      tempo.cuenta(6, p1, 1000,()=>{p1.textContent=0});
+      tempo.cuenta(60, p2, 100,()=>{p2.textContent="FIN"});
+    </script>
+  </body>
+</html>
